@@ -176,14 +176,25 @@
             speedMeter.textContent = `Speed: ${(speed * 5).toFixed(2)} kph`;
         }
 
-        function movePlayerPaddle(event) {
-            if (gameRunning && !gamePaused) {
-                playerPaddleX = event.clientX - gameBoard.offsetLeft - playerPaddle.clientWidth / 2;
-                if (playerPaddleX < 0) playerPaddleX = 0;
-                if (playerPaddleX > gameBoard.clientWidth - playerPaddle.clientWidth) playerPaddleX = gameBoard.clientWidth - playerPaddle.clientWidth;
-                playerPaddle.style.left = playerPaddleX + "px";
-            }
-        }
+          function movePlayerPaddle(event) {
+    if (gameRunning && !gamePaused) {
+      let x;
+      if (event.type === 'touchmove') {
+        x = event.touches[0].clientX - gameBoard.offsetLeft - playerPaddle.clientWidth / 2;
+      } else {
+        x = event.clientX - gameBoard.offsetLeft - playerPaddle.clientWidth / 2;
+      }
+
+      if (x < 0) x = 0;
+      if (x > gameBoard.clientWidth - playerPaddle.clientWidth) x = gameBoard.clientWidth - playerPaddle.clientWidth;
+
+      playerPaddleX = x;
+      playerPaddle.style.left = playerPaddleX + "px";
+    }
+  }
+
+  gameBoard.addEventListener("mousemove", movePlayerPaddle);
+  gameBoard.addEventListener("touchmove", movePlayerPaddle);
 
         function moveComputerPaddle() {
             if (gameRunning && !gamePaused) {
