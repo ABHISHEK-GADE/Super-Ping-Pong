@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-board">
+        <div id="ball"></div>
+        <div id="player-paddle" class="paddle"></div>
+        <div id="computer-paddle" class="paddle"></div>
+        <div id="player-score" class="score">Player: 0</div>
+        <div id="computer-score" class="score">Computer: 0</div>
+        <div id="win-screen">
+            You Win!
+            <button class="restart-button" id="win-restart-button">Play Again</button>
+        </div>
+        <div id="lose-screen">
+            You Lose!
+            <button class="restart-button" id="lose-restart-button">Try Again</button>
+        </div>
+        <div id="speed-meter">Speed: 0 kph</div>
+        <div class="control-panel">
+            <button class="control-button" id="play-pause-button">Play</button>
+            <button class="control-button" id="reset-button">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
